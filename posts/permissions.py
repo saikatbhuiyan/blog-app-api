@@ -1,7 +1,6 @@
 from rest_framework import permissions
 
-
-class BasePermission(object):
+class IsAuthorOrReadOnly(object):
   """
   A base class from which all permission classes should inherit.
   """
