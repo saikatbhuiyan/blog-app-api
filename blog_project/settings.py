@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_swagger', # new
     'allauth', # new
     'allauth.account', # new
     'allauth.socialaccount', # new
@@ -142,16 +143,24 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        # 'rest_framework.permissions.AllowAny',
-        'rest_framework.permissions.IsAuthenticated', 
-    ],
+# REST_FRAMEWORK = {
+# #     'DEFAULT_PERMISSION_CLASSES': [
+# #         # 'rest_framework.permissions.AllowAny',
+# #         'rest_framework.permissions.IsAuthenticated', 
+# #     ],
 
-    'DEFAULT_AUTHENTICATION_CLASSES': [ # new
-        # 'rest_framework.authentication.SessionAuthentication',
-        # 'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.TokenAuthentication', # new
-    ],
+# #     'DEFAULT_AUTHENTICATION_CLASSES': [ # new
+# #         # 'rest_framework.authentication.SessionAuthentication',
+# #         # 'rest_framework.authentication.BasicAuthentication',
+# #         'rest_framework.authentication.TokenAuthentication', # new
+# #     ],
+#     'DEFAULT_SCHEMA_CLASS': ['rest_framework.schemas.coreapi.AutoSchema',]
 
+# }
+
+REST_FRAMEWORK = { 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema' }
+
+SWAGGER_SETTINGS = {
+    'LOGIN_URL': 'rest_framework:login',
+    'LOGOUT_URL': 'rest_framework:logout',
 }
